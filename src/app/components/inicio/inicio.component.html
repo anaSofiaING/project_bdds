@@ -1,0 +1,255 @@
+<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner" >
+      <div class="carousel-item active" data-interval="1000" >
+        <img style="height: 650px;"  src="https://img1.ak.crunchyroll.com/i/spire1/97ca6ffffb001b45fdd8f1dc0250f3c41676071607_main.jpg" class="d-block w-100" alt="...">
+      </div>
+    </div>
+</div>
+
+  <!-- recomendaciones -->
+  <section class="pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="">
+                <h3 class="mb-3">Bienvenid@ {{currentUsuario.nombre}} checa el top 3 del momento</h3>
+            </div>
+            <div class="col-12">
+                <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col-md-4 mb-3" *ngFor="let pelicula of peliculas; let i = index"
+                                [class.active]="i == currentIndex"
+                                (click)="setActivePelicula(pelicula, i)">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{{pelicula.foto}}">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{pelicula.nombre}}</h4>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- generos -->
+<section class="pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h3 class="mb-3">Busca por géneros... </h3>
+            </div>
+            <div class="col-6 text-right">
+                <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators3" role="button" data-slide="prev">
+                    <
+                </a>
+                <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators3" role="button" data-slide="next">
+                    >
+                </a>
+            </div>
+            <div class="col-12">
+                <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+
+                                <div class="col-md-4 mb-3">
+                                    <div class="card" (click)="genero(3)">
+                                        <img class="img-fluid" alt="100%x280" src="https://i.blogs.es/4755f7/accion/1366_2000.jpeg">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Acción</h4>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card" (click)="genero(5)">
+                                        <img class="img-fluid" alt="100%x280" src="https://i.ytimg.com/vi/LVTKodL4Zzs/maxresdefault.jpg">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Comedia</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card" (click)="genero(4)">
+                                        <img class="img-fluid" alt="100%x280" src="https://www.bontena.com/es/imagenes/bmdb/Las-mejores-peliculas-de-drama-de-2022-1200.jpg">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Drama</h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+
+                                <div class="col-md-4 mb-3">
+                                    <div class="card" (click)="genero(2)">
+                                        <img class="img-fluid" alt="100%x280" src="https://i.blogs.es/56d0cd/diseno-sin-titulo-4-/1366_2000.jpeg">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Ciencia Ficción</h4>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card" (click)="genero(1)">
+                                        <img class="img-fluid" alt="100%x280" src="https://pymstatic.com/21157/conversions/peliculas-de-suspense-small-16_9.jpg">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Thriller</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card" (click)="genero(6)">
+                                        <img class="img-fluid" alt="100%x280" src="https://cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/EWHIZH4J3K7656CXREJTF4UTTY.jpg">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Suspense</h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div *ngIf="topPais0; else elseBlock">
+<!-- populares-->
+<section class="pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h3 class="mb-3">En {{pais}} esto es lo más nuevo</h3>
+            </div>
+            <div class="col-6 text-right">
+                <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators4" role="button" data-slide="prev">
+                    <
+                </a>
+                <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators4" role="button" data-slide="next">
+                    >
+                </a>
+            </div>
+            <div class="col-12">
+                <div id="carouselExampleIndicators4" class="carousel slide" data-ride="carousel">
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col-md-4 mb-3" >
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{{topPais0[0].foto}}">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{topPais0[0].nombre}} </h4>
+                                            <p class="card-text">⭐ {{topPais0[0].puntuacion}} </p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3" >
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{{topPais0[1].foto}}">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{topPais0[1].nombre}} </h4>
+                                            <p class="card-text">⭐ {{topPais0[1].puntuacion}} </p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3" >
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{{topPais0[2].foto}}">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{topPais0[2].nombre}} </h4>
+                                            <p class="card-text">⭐ {{topPais0[2].puntuacion}} </p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class="col-md-4 mb-3" >
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{{topPais0[3].foto}}">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{topPais0[3].nombre}} </h4>
+                                            <p class="card-text">⭐ {{topPais0[3].puntuacion}} </p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3" >
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{{topPais0[4].foto}}">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{topPais0[4].nombre}} </h4>
+                                            <p class="card-text">⭐ {{topPais0[4].puntuacion}} </p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3" >
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{{topPais0[5].foto}}">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{topPais0[5].nombre}} </h4>
+                                            <p class="card-text">⭐ {{topPais0[5].puntuacion}} </p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="carousel-item">
+                            <div class="row">
+                                <div class="col-md-4 mb-3" *ngFor="let pelicula of topPais2; let i = index"
+                                [class.active]="i == currentIndex"
+                                (click)="setActivePelicula(pelicula, i)">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{{pelicula.foto}}">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{pelicula.nombre}} </h4>
+                                            <p class="card-text">{{pelicula.puntuacion}} </p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</div>
+<ng-template #elseBlock>
+<!-- populares-->
+
+
+</ng-template>

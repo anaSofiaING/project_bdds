@@ -1,0 +1,162 @@
+<div *ngIf="viewMode; else editable"> 
+    <div *ngIf="currentUsuario.id">
+      <h4>Tutorial</h4>
+      <div>
+        <label><strong>Title:</strong></label> {{ currentUsuario.nombre }}
+      </div>
+      <div>
+        <label><strong>Description:</strong></label>
+        {{ currentUsuario.correo }}
+      </div>
+      <div>
+        <label><strong>Status:</strong></label>
+        {{ currentUsuario.contrasena}}
+      </div>
+  
+      <a
+        class="badge badge-warning"
+        routerLink="/usuarios/{{ currentUsuario.id }}"
+      >
+        Edit
+      </a>
+    </div>
+  
+    <div *ngIf="!currentUsuario">
+      <br />
+      <p>Please click on ...</p>
+    </div>
+  
+  </div>
+  
+  <ng-template #editable>
+    <div *ngIf="currentUsuario.id" class="edit-form">
+      <h4>Tutorial</h4>
+      <form>
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            [(ngModel)]="currentUsuario.nombre"
+            name="title"
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            [(ngModel)]="currentUsuario.apellido"
+            name="description"
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            [(ngModel)]="currentUsuario.foto"
+            name="description"
+          />
+        </div>
+      </form>
+  
+      <!-- <button
+        type="submit"
+        class="badge badge-success mb-2" 
+       </button> (click)="updateUsuario()" > 
+      
+        Update
+      </button> -->
+      <p>{{ message }}</p>
+    </div>
+  
+  </ng-template> 
+
+<button type="button"  (click)="salir()" class="btn text-dark float-right" style="background: #fff13c;">Cerrar Sesión</button>
+<br><br>
+
+<div class="container mt-5 mb-5">
+  <div class="row no-gutters">
+      <div class="col-md-4 col-lg-4"><img style="object-fit: cover;" src="{{user.foto}}"></div>
+      <div class="col-md-8 col-lg-8">
+          <div class="d-flex flex-column">
+              <div class="d-flex flex-row justify-content-between align-items-center p-5 text-white" style="background: #ff903c;">
+                  <h3 class="display-5">{{ user.nombre }} {{ user.apellido }}</h3></div>
+              <div class="p-3 bg-black text-white">
+                  <h6>{{user.correo}}</h6>
+              </div>
+              <div class="d-flex flex-row text-white">
+                  <div class="p-4 text-center skill-block" style="background: #3cff8f;">
+                      <h4>País</h4>
+                      <h6>{{pais}}</h6>
+                  </div>
+                  <div class="p-3 text-center skill-block" style="background: #3cacff;">
+                      <h4>Edad</h4>
+                      <h6>{{user.edad}}</h6>
+                  </div>
+                  <div class="p-3 text-center skill-block" style="background: #8f3cff">
+                      <h5>Reseñas hechas</h5>
+                      <h6>{{cont}}</h6>
+                  </div>
+                  <div class="p-3 text-center skill-block" style="background: #ff3cac;" data-toggle="modal" data-target="#exampleModalCenter">
+                      <h4>EDITAR DATOS</h4>
+                  </div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-dark" >Edita tus datos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail1" class="text-dark">Edad</label>
+              <input type="number" class="form-control" id="inputEmail1" name="edad" [(ngModel)]="currentUsuario.edad">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputEmail4" class="text-dark">Correo</label>
+              <input type="email" class="form-control" id="inputEmail4"name="correo" [(ngModel)]="currentUsuario.correo">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4" class="text-dark">Password</label>
+              <input type="password" class="form-control" id="inputPassword4" name="contrasena" [(ngModel)]="currentUsuario.contrasena">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputCity" class="text-dark">País</label>
+              <select id="inputState" class="form-control text-dark" name="pais" [(ngModel)]="currentUsuario.pais">
+                <option selected>Choose...</option>
+                <option [value]="1">México</option>
+                <option [value]="2">USA</option>
+                <option [value]="3">Reino Unido</option>
+                <option [value]="5">Canadá</option>
+                <option [value]="4">España</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress" class="text-dark">Foto (link)</label>
+            <input type="text" class="form-control" id="inputAddress" name="foto" [(ngModel)]="currentUsuario.foto">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary"  (click)="update()" data-dismiss="modal"
+        aria-label="Close">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

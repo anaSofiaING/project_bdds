@@ -1,0 +1,53 @@
+
+
+<div  class="container">
+  <div class="mb-3">
+    <!-- Section Heading-->
+    <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+     <br> <h3>CONOCE A GENTE  </h3>
+      <p>CON GUSTOS SIMILARES</p>
+      <div class="input-group">
+        <input type="text"
+        class="form-control"
+        placeholder="Busca por nombre"
+        [(ngModel)]="nombre">
+        <div class="input-group-append">
+          <button type="button" class="btn btn-outline-secondary" (click)="searchNombre()">Buscar</button>
+          <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" (click)="cambiarVal(0)">De todo el mundo</a>
+            <a class="dropdown-item" (click)="cambiarVal(1)">México</a>
+            <a class="dropdown-item" (click)="cambiarVal(2)">USA</a>
+            <a class="dropdown-item" (click)="cambiarVal(3)">Reino Unido</a>
+            <a class="dropdown-item" (click)="cambiarVal(4)">España</a>
+            <a class="dropdown-item" (click)="cambiarVal(5)">Canadá</a>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  <br><br>
+  <div class="row">
+    <div class="list-group-item"
+    *ngFor="let usuario of usuarios; let i = index"
+    [class.active]="i == currentIndex"
+    (click)="setActiveUsuario(usuario, i)" >                       
+      <div class="card" style="margin: 23px;">
+        <div class="card-body">
+          <div class="media align-items-center"><span style="background-image: url({{usuario.foto}})" class="avatar avatar-xl mr-3"></span>
+            <div class="media-body overflow-hidden">
+              <h5 class="card-text mb-0">{{usuario.nombre}}</h5>
+              <p class="card-text text-uppercase text-muted">{{usuario.apellido}}</p>
+              <p class="card-text">
+                 
+                {{usuario.correo}}<br><abbr title="Phone">País </abbr>{{usuario.pais}}
+              </p>
+            </div>
+          </div><a href="usuarios/{{usuario.id}}" class="tile-link"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

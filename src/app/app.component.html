@@ -1,0 +1,58 @@
+<div *ngIf="idUsuario; else elseBlock">
+
+    <nav class="navbar navbar-expand navbar-dark bg-dark" style="background-color: #FF3CAC;
+    background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+    ">
+      <a href="#" class="navbar-brand">Cuevita</a>
+      <div class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a routerLink="usuarios" class="nav-link">Usuarios</a>
+        </li>
+        
+        <li class="nav-item">
+          <a routerLink="peliculas" class="nav-link">Peliculas</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="perfil" class="nav-link">{{currentUsuario.nombre}}</a>
+        </li> 
+  
+      </div>
+    </nav>
+  
+
+</div>
+<ng-template #elseBlock>
+
+ 
+    <nav class="navbar navbar-expand navbar-dark bg-dark" style="background-color: #FF3CAC;
+    background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+    ">
+      <a href="#" class="navbar-brand">Cuevita</a>
+      <div class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a routerLink="usuarios" class="nav-link">Usuarios</a>
+        </li>
+        
+        <li class="nav-item">
+          <a routerLink="peliculas" class="nav-link">Peliculas</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="add" class="nav-link">Registrarse</a>
+        </li> 
+        <li class="nav-item">
+          <a routerLink="login" class="nav-link">Iniciar Sesión</a>
+        </li>
+  
+      </div>
+    </nav>
+
+</ng-template>
+
+
+
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+
+
+

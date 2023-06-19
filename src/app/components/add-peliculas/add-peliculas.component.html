@@ -1,0 +1,25 @@
+<div class="container">
+  <br>
+  <h2 style="text-align: center;">Películas Más Relevantes De {{nomgen}}</h2> <br><br>
+    <div class="row">
+        <!-- Single Advisor-->
+        <div class="col-12 col-sm-6 col-lg-3" 
+        *ngFor="let pelicula of movies; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActivePelicula(pelicula, i)">
+          <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+            <!-- Team Thumb-->
+            <div class="advisor_thumb"  ><img class="w-100"  src="{{pelicula.foto}}" alt="">
+              <!-- Social Info-->
+              <div class="social-info"></div>
+            </div>
+            <!-- Team Details-->
+            <div class="single_advisor_details_info" >
+              <h6>{{pelicula.nombre}}</h6>
+              <p class="designation"> ⭐ {{pelicula.puntuacion}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+</div>

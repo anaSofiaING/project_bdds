@@ -1,0 +1,286 @@
+<section class="section about-section gray-bg" id="about">
+    <div class="container">
+        <div class="row align-items-center flex-row-reverse">
+            <div class="col-lg-6">
+                <div class="about-text go-to">
+                    <h3 class="dark-color">{{currentPelicula.nombre}}</h3>
+                    <h5 class="theme-color leadbtn btn-default btn-rounded mb-4" data-toggle="modal"
+                    data-target="#modalPerfilDirector">Una película de {{currentPelicula.director}}</h5>
+                        <div class="modal fade" id="modalPerfilDirector" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header text-center">
+                                        <h4 class="modal-title w-100 font-weight-bold">{{currentPelicula.director}}</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body mx-3">
+                                        <img src="{{thisdirector.foto}} " alt="">
+                                        {{thisdirector.nombre}} {{thisdirector.apellido}} <br>
+                                        Edad: {{thisdirector.edad}} años <br>
+            
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                    <p>{{currentPelicula.sinopsis}}</p>
+                    <div class="row about-list">
+                        <div class="col-md-6">
+                            <div class="media">
+                                <label>Estreno</label>
+                                <p>{{currentPelicula.anio}}</p>
+                            </div>
+                            <div class="media">
+                                <label>País</label>
+                                <p>{{pais}}</p>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="media">
+                                <label>Director</label>
+                                <p>{{currentPelicula.director}} </p>
+                            </div>
+                            <div class="media">
+                                <label>Fecha de estreno</label>
+                                <p>{{currentPelicula.dia}}/{{currentPelicula.mes}}/{{currentPelicula.anio}} </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-avatar">
+                    <img src="{{currentPelicula.foto}}" title="" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="counter">
+            <div class="row">
+                <div class="col-6 col-lg-3">
+                    <div class="count-data text-center">
+                        <h6 class="count h2" data-to="500" data-speed="500">Puntuación Global</h6>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="count-data text-center">
+                        <h6 class="count h2" data-to="150" data-speed="150">{{currentPelicula.puntuacion}} </h6>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="count-data text-center">
+                        <h6 class="count h2" data-to="850" data-speed="850">Tu Puntuación</h6>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="count-data text-center">
+                        <h6 class="count h2" data-to="190" data-speed="190">{{myPuntuacion}}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h3 class="mb-3">Reparto</h3>
+            </div>
+            <div class="col-12">
+                <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+                    <div *ngIf="actores">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+
+                                    <div class="col-md-4 col-lg-4">
+                                        <div class="card" (click)="getActor(actores[0])"   data-toggle="modal"
+                                            data-target="#modalPerfilActor">
+                                               
+                                            <img class="img-fluid"
+                                                style="object-fit: cover;height: 280px;"
+                                                src="{{actores[0].foto}}">
+                                            <div class="card-body">
+                                                <h4 class="card-title">{{actores[0].nombre}} {{actores[0].apellido}}
+                                                </h4>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-lg-4">
+                                        <div class="card" (click)="getActor(actores[1])"  data-toggle="modal"
+                                            data-target="#modalPerfilActor">
+                                               
+                                            <img class="img-fluid" style="object-fit: cover;height: 280px;"
+                                                src="{{actores[1].foto}}">
+                                            <div class="card-body">
+                                                <h4 class="card-title">{{actores[1].nombre}} {{actores[1].apellido}}
+                                                </h4>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-lg-4">
+                                        <div class="card" (click)="getActor(actores[2])"   data-toggle="modal"
+                                            data-target="#modalPerfilActor">
+                                               
+                                            <img class="img-fluid" style="object-fit: cover;height: 280px;"
+                                                src="{{actores[2].foto}}">
+                                            <div class="card-body">
+                                                <h4 class="card-title">{{actores[2].nombre}} {{actores[2].apellido}}
+                                                </h4>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="modalPerfilActor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold">{{thisactor.nombre}} {{thisactor.apellido}}</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body mx-3">
+            <img src="{{thisactor.foto}} " alt="">
+            Nacionalidad: {{thisactor.nacionalidad}} <br>
+            Edad: {{thisactor.edad}} años <br>
+            Proyecto actual: {{thisactor.proyactual}}
+
+        </div>
+    </div>
+</div>
+</div>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div class="container event-schedule-area-two bg-color pad100">
+    <div class="container">
+
+        <div *ngIf="perfil; else elseBlock">
+            <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="modal-title w-100 font-weight-bold">¿Qué te pareció la pelicula?</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3">
+
+                            <label data-error="wrong" data-success="right" for="defaultForm-pass">Título</label>
+                            <div class="form-outline mb-4">
+                                <input class="form-control" id="titulo" type="text" required [(ngModel)]="resena.titulo"
+                                    name="usuario.contrasena" />
+                            </div>
+
+                            <div class="md-form mb-4">
+                                <label data-error="wrong" data-success="right" for="defaultForm-pass">Opinión</label>
+                                <div class="form-outline mb-4">
+                                    <input class="form-control" id="titulo" type="text" required
+                                        [(ngModel)]="resena.critica" name="usuario.contrasena" />
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="formControlRange">Del 1 al 100, ¿Qué le pondrías?</label>
+                                    <input type="range" min="1" max="100" class="form-control-range"
+                                        [(ngModel)]="resena.calificacion" id="formControlRange"
+                                        onchange="rangevalue.value=value" />
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="button" class="close" (click)="saveResena()" data-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true"></span>Guardar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center" >
+                <a href="" class="btn btn-default btn-rounded mb-4 text-light" style="font-family: bold; font-size: larger; background:  #4158D0;
+                background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%);
+                ;" data-toggle="modal"
+                    data-target="#modalLoginForm">¡Redacta tu reseña aquí!</a>
+            </div>
+        </div>
+        <ng-template #elseBlock>
+            <div class="alert alert-info" role="alert">
+                Registrate para dejar tu opinión!
+              </div>
+            </ng-template>
+
+        <!-- /.col end-->
+    </div>
+    <!-- row end-->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade active show" id="home" role="tabpanel">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" scope="col">Puntuación</th>
+                                    <th scope="col">Autor</th>
+                                    <th scope="col">Opinión</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="inner-box" *ngFor="let res of resenas; let i = index"
+                                    [class.active]="i == currentIndex">
+                                    <th scope="row">
+                                        <div class="event-date">
+                                            <span>{{res.calificacion}}</span>
+                                        </div>
+                                    </th>
+                                    <td>
+                                        <div class="event-img">
+                                            {{res.nombre}} {{res.apellido}}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="event-wrap">
+                                            <h3><a>{{res.titulo}}</a></h3>
+                                            <div class="meta">
+                                                {{res.critica}}
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /col end-->
+        <!-- /row end-->
+    </div>
+</div>

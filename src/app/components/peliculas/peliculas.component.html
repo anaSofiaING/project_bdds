@@ -1,0 +1,97 @@
+ <!--<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by title"
+          [(ngModel)]="nombre"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            (click)="searchNombre()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Peliculas List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let pelicula of peliculas; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActivePelicula(pelicula, i)"
+        >
+          {{ pelicula.nombre }}
+        </li>
+      </ul>
+  
+      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllPeliculas()">
+        Remove All
+      </button>
+    </div>
+    <div class="col-md-6">
+       <app-usuario-details
+        [viewMode]="true"
+        [currentUsuario]="currentPelicula"
+      ></app-usuario-details> 
+    </div>
+  </div> -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-sm-8 col-lg-6">
+            <!-- Section Heading-->
+            <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+             <br> <h3>CONOCE LAS PELÍCULAS </h3>
+              <p>MÁS POPULARES EN ESTE MOMENTO</p>
+              <div class="input-group">
+                <input type="text"
+                class="form-control"
+                placeholder="Buscar por nombre"
+                [(ngModel)]="nombre">
+                <div class="input-group-append">
+                  <button type="button" class="btn btn-outline-secondary" (click)="searchNombre()">Buscar</button>
+                  <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" (click)="cambiarVal(0)">De todo el mundo</a>
+                    <a class="dropdown-item" (click)="cambiarVal(1)">México</a>
+                    <a class="dropdown-item" (click)="cambiarVal(2)">USA</a>
+                    <a class="dropdown-item" (click)="cambiarVal(3)">Reino Unido</a>
+                    <a class="dropdown-item" (click)="cambiarVal(4)">España</a>
+                    <a class="dropdown-item" (click)="cambiarVal(5)">Canadá</a>
+                  </div>
+                </div>
+              </div>
+             
+            </div>
+          </div>
+        </div> <br><br>
+        <div class="row">
+          <!-- Single Advisor-->
+          <div class="col-12 col-sm-6 col-lg-3" 
+          *ngFor="let pelicula of peliculas; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActivePelicula(pelicula, i)">
+            <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+              <!-- Team Thumb-->
+              <div class="advisor_thumb"  ><img class="w-100"  src="{{pelicula.foto}}" alt="">
+                <!-- Social Info-->
+                <div class="social-info"></div>
+              </div>
+              <!-- Team Details-->
+              <div class="single_advisor_details_info" >
+                <h6>{{pelicula.nombre}}</h6>
+                <p class="designation"> ⭐ {{pelicula.puntuacion}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
